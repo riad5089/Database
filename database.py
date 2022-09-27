@@ -17,13 +17,13 @@ class Dbhelper:
     def register(self,name,email,password):
         try:
             self.mycursor.execute("""
-            INSERT INTO users (id,name,email,password) VALUES (NULL,'{}','{}','{}');
+            INSERT INTO `users` (`id`,`name`,`email`,`password`) VALUES (NULL,'{}','{}','{}');
             """.format(name,email,password))
             self.conn.commit()
         except:
              return -1
-        # else:
-        #     return 1
+        else:
+             return 1
     def search(self,email,password):
         self.mycursor.execute("""
         SELECT * FROM USERS WHERE email like "{}" AND password LIKE "{}"
